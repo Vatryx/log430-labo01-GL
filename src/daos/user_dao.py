@@ -48,8 +48,8 @@ class UserDAO:
 
     def delete(self, user_id):
         """ Delete user from MySQL with given user ID """
-        self.cursor.execute("DELETE FROM users WHERE id=%s", (user_id))
-        self.cursor.commit()
+        self.cursor.execute("DELETE FROM users WHERE id=%s", (user_id,))
+        self.conn.commit()
         return self.cursor.rowcount
 
     def delete_all(self): #optional
