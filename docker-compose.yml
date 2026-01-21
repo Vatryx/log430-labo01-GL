@@ -39,6 +39,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: labo01
     volumes:
       - mongo-data:/data/db
+      - ./db-init:/docker-entrypoint-initdb.d
     networks:
       - labo01-network
 
