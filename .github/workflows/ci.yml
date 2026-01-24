@@ -4,13 +4,13 @@ on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout dépot
         uses: actions/checkout@v4
 
-      - name: Créer fichier .env (TODO - utilisez les secrets)
+      - name: Créer fichier .env
         run: |
           echo "MYSQL_HOST=mysql" >> .env
           echo "MONGODB_HOST=mongo" >> .env
@@ -39,7 +39,21 @@ jobs:
           sleep 5
 
       - name: Éxécuter les tests (TODO - ajouter test_products)
-        run: docker exec store_manager_cli pytest ./src/tests/test_user.py
+        run: 
+          docker exec store_manager_cli pytest ./src/tests/test_user.py
+          docker exec store_manager_cli pytest ./src/tests/test_product.py
+          
+      - name: Déploiement de l'application
+        if: success()
+        run: |
+          echo "Pull des dernières modifications..."
+          git reset --hard
+          git clean -fd
+          git pull origin main
+          
+          echo "Redémarrage des conteneurs Docker..."
+          docker compose down -v
+          docker compose up -d --build
 
       - name: Cleanup
         if: always()
