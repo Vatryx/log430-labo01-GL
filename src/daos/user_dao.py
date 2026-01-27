@@ -17,7 +17,7 @@ class UserDAO:
             db_host = os.getenv("MYSQL_HOST")
             db_name = os.getenv("MYSQL_DATABASE")
             db_user = os.getenv("MYSQL_USER")
-            db_pass = os.getenv("MYSQL_ROOT_PASSWORD")    
+            db_pass = os.getenv("MYSQL_PASSWORD")    
             self.conn = mysql.connector.connect(host=db_host, user=db_user, password=db_pass, database=db_name) 
             self.cursor = self.conn.cursor()
         except FileNotFoundError as e:
