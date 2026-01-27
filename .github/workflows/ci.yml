@@ -12,11 +12,18 @@ jobs:
 
       - name: Créer fichier .env
         run: |
-          echo "MYSQL_HOST=mysql" >> .env
-          echo "MONGODB_HOST=mongo" >> .env
-          echo "MYSQL_DB_NAME=labo01_db" >> .env
-          echo "DB_USERNAME=labo01" >> .env
-          echo "DB_PASSWORD=labo01" >> .env
+          echo "MYSQL_HOST=${{secrets.MYSQL_HOST}}" >> .env
+          echo "MONGODB_HOST=${{secrets.MONGODB_HOST}}" >> .env
+          echo "MYSQL_DATABASE=${{secrets.MYSQL_DATABASE}}" >> .env
+          echo "MYSQL_USER=${{secrets.MYSQL_USER}}" >> .env
+          echo "MYSQL_PASSWORD=${{secrets.MYSQL_PASSWORD}}" >> .env
+          echo "MONGO_INITDB_ROOT_USERNAME=${{secrets.MONGO_INITDB_ROOT_USERNAME}}" >> .env
+          echo "MONGO_INITDB_ROOT_PASSWORD=${{secrets.MONGO_INITDB_ROOT_PASSWORD}}" >> .env
+          echo "MONGODB_HOST=${{secrets.MONGODB_HOST}}" >> .env
+          echo "MONGODB_PORT=${{secrets.MONGODB_PORT}}" >> .env
+          echo "MONGO_USER=${{secrets.MONGO_USER}}" >> .env
+          echo "MONGO_PASSWORD=${{secrets.MONGO_PASSWORD}}" >> .env
+          echo "MONGO_DB=${{secrets.MONGO_DB}}" >> .env
 
       - name: Démarrer le conteneur
         run: |
