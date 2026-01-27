@@ -20,7 +20,7 @@ MongoDB est un type de base de données qui utilise le format JSON (clé-valeur)
 ### Question 3 
 Comment avez-vous implémenté votre product_view.py ? Est-ce qu’il importe directement la ProductDAO ? Veuillez inclure le code pour illustrer votre réponse.
 
-Dans ce laboratoire, nous avons deux vues : une pour les users et une pour les products. Chacune possède ses propres méthodes pour effectuer des actions dans l’application. Cependant, j’ai regroupé ces deux vues dans un fichier nommé app_view.py, qui s’occupe de l’affichage et qui détermine la durée d’exécution de l’application en fonction des choix de l’utilisateur.
+Dans ce laboratoire, nous avons 2 vues : une pour les users et une pour les products. Chacune possède ses propres méthodes pour effectuer des actions dans l’application. Cependant, j’ai regroupé ces deux vues dans un fichier nommé app_view.py, qui s’occupe de l’affichage et qui détermine la durée d’exécution de l’application en fonction des choix de l’utilisateur.
 
 Il est important de préciser que les vues n’ont aucun accès direct au DAO, puisqu’elles n’ont techniquement pas conscience de son existence. Seuls les contrôleurs des deux modèles agissent comme des ponts afin d’effectuer les opérations nécessaires.
 Vous trouverez ci-dessous, dans l’ordre, les fichiers product_view.py et app_view.py.
