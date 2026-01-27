@@ -51,7 +51,7 @@ jobs:
 
       - name: Déploiement de l'application
         if: success()  
-        run: 
+        run: |
           git reset --hard
           git clean -fd
           git pull origin main
