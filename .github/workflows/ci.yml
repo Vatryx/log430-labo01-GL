@@ -33,7 +33,7 @@ jobs:
         run: |
           sleep 10
           timeout=60
-          until docker exec mysql-1 mysqladmin ping -h localhost -u root -proot --silent; do
+          until docker exec mysql mysqladmin ping -h localhost -u root -proot --silent; do
             echo "Waiting for MySQL..."
             sleep 3
             timeout=$((timeout - 3))
